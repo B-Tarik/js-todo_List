@@ -1,4 +1,4 @@
-const Todo            = require('../models/todo');
+const Todo = require('../models/todo');
 
 exports.getTodos = function(req, res) {
     Todo.find()
@@ -41,7 +41,7 @@ exports.updateTodo = function(req, res) {
 }
 
 exports.deleteTodo = function(req, res) {
-    Todo.remove({_id: req.params.todoId})
+    Todo.deleteOne({_id: req.params.todoId})
     .then(function() {
         res.json({message: 'Succesfully Deleted.'});
     })

@@ -4,7 +4,7 @@ const express       = require('express'),
 
 
 router.get('/', function(req, res) {
-    res.send('Hello');
+    res.sendFile('index.html');
 });
 
 
