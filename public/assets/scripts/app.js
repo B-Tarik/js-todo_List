@@ -36,7 +36,6 @@ function queryTodos(todos) {
         let newLi = createListItem(todo);
             
         addClasses(todo, newLi);
-
         fragment.appendChild(newLi);
     });
     list.appendChild(fragment); 
@@ -72,7 +71,6 @@ function appendTodo(newTodo) {
     const newLi     = createListItem(newTodo);
 
     addClasses(newTodo, newLi);
-
     list.appendChild(newLi); 
 }
 
@@ -99,18 +97,14 @@ function addClasses(todo, newLi) {
     newLi.classList.add('task');
 }
 
-function removeTodo(e , self) {
+function removeTodo(e, self) {
     if (e.target.tagName === 'SPAN') {
         const todoId  = e.target.parentNode.dataset.id;
         
-        fetch(url + todoId, {
-            method: 'DELETE',
-        })
+        fetch(url + todoId, {method: 'DELETE'})
         .then(h.handelErrors)
         .then(h.parseJSON)
-        .then(function(data) {
-            self.removeChild(e.target.parentNode);
-        })
+        .then(() => self.removeChild(e.target.parentNode))
         .catch(h.printError);
     }
 }
@@ -126,8 +120,8 @@ function updateTodo(e) {
             method: 'PUT',
             headers: {
                 "Content-type": "application/json; charset=UTF-8"
-              },
-              body: JSON.stringify({completed: isDone})
+            },
+            body: JSON.stringify({completed: isDone})
         })
         .then(h.handelErrors)
         .then(h.parseJSON)
