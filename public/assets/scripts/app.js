@@ -1,11 +1,10 @@
 import h from './helper.js';
 
-let url = '/api/todos/';
+const url   = '/api/todos/',
+    list    = document.querySelector('.js-list');
 
 h.ready(function(){
-    let todoInput = document.querySelector('.js-todoInput'),
-        list = document.querySelector('.js-list');
-
+    const todoInput = document.querySelector('.js-todoInput');
     
     // get all todos list 
     fetch(url)
@@ -31,10 +30,8 @@ h.ready(function(){
 });
 
 function queryTodos(todos) {
-    let list        = document.querySelector('.js-list'),
-        fragment    = document.createDocumentFragment();
+    const fragment    = document.createDocumentFragment();
         
-
     todos.forEach(todo => {
         let newLi = createListItem(todo);
             
@@ -52,7 +49,7 @@ function addTodo(e) {
 }
 
 function createTodo() {
-    let input = document.querySelector('.js-todoInput'),
+    const input = document.querySelector('.js-todoInput'),
         userInput = input.value;
 
     fetch(url, {
@@ -72,8 +69,7 @@ function createTodo() {
 }
 
 function appendTodo(newTodo) {
-    let list    = document.querySelector('.js-list'),
-        newLi   = createListItem(newTodo);;
+    const newLi     = createListItem(newTodo);
 
     addClasses(newTodo, newLi);
 
@@ -81,8 +77,8 @@ function appendTodo(newTodo) {
 }
 
 function createListItem(todo) {
-    let newLi   = document.createElement('li'),
-        newSpan   = document.createElement('span');
+    const newLi     = document.createElement('li'),
+        newSpan     = document.createElement('span');
 
         newSpan.textContent = 'x';
         newSpan.classList.add('js-removeTodo');
@@ -105,7 +101,7 @@ function addClasses(todo, newLi) {
 
 function removeTodo(e , self) {
     if (e.target.tagName === 'SPAN') {
-        let todoId  = e.target.parentNode.dataset.id;
+        const todoId  = e.target.parentNode.dataset.id;
         
         fetch(url + todoId, {
             method: 'DELETE',
@@ -122,9 +118,9 @@ function removeTodo(e , self) {
 function updateTodo(e) {
     if (e.target.tagName === 'LI') {
         
-        let liTag   = e.target,
-            todoId  = e.target.dataset.id,
-            isDone  = !(e.target.dataset.completed === 'true');
+        const liTag     = e.target,
+            todoId      = e.target.dataset.id,
+            isDone      = !(e.target.dataset.completed === 'true');
 
         fetch(url + todoId, {
             method: 'PUT',
