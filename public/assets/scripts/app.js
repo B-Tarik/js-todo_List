@@ -48,8 +48,8 @@ function addTodo(e) {
 }
 
 function createTodo() {
-    const input = document.querySelector('.js-todoInput'),
-        userInput = input.value;
+    const input = document.querySelector('.js-todoInput');
+    let userInput = input.value;
 
     fetch(url, {
         method: 'POST',
@@ -68,7 +68,7 @@ function createTodo() {
 }
 
 function appendTodo(newTodo) {
-    const newLi     = createListItem(newTodo);
+    let newLi     = createListItem(newTodo);
 
     addClasses(newTodo, newLi);
     list.appendChild(newLi); 
@@ -99,7 +99,7 @@ function addClasses(todo, newLi) {
 
 function removeTodo(e, self) {
     if (e.target.tagName === 'SPAN') {
-        const todoId  = e.target.parentNode.dataset.id;
+        let todoId  = e.target.parentNode.dataset.id;
         
         fetch(url + todoId, {method: 'DELETE'})
         .then(h.handelErrors)
@@ -112,7 +112,7 @@ function removeTodo(e, self) {
 function updateTodo(e) {
     if (e.target.tagName === 'LI') {
         
-        const liTag     = e.target,
+        let liTag       = e.target,
             todoId      = e.target.dataset.id,
             isDone      = !(e.target.dataset.completed === 'true');
 
@@ -125,7 +125,7 @@ function updateTodo(e) {
         })
         .then(h.handelErrors)
         .then(h.parseJSON)
-        .then(function(updatedTodo) {
+        .then(() => {
             liTag.classList.toggle('done');
             liTag.setAttribute('data-completed', isDone);
         })
