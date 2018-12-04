@@ -21,3 +21,6 @@ it's a todo list with:
 
 **Database:** mongoDB
 
+### Screenshot
+
+![alt text](https://raw.githubusercontent.com/B-Tarik/js-todo_List/tree/master/screenshot/todoList.jpg)
