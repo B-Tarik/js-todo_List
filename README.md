@@ -23,4 +23,4 @@ it's a todo list with:
 
 ### Screenshot
 
-![alt text](https://raw.githubusercontent.com/B-Tarik/js-todo_List/tree/master/screenshot/todoList.jpg)
+![alt text](https://github.com/B-Tarik/js-todo_List/blob/master/screenshot/todoList.jpg)
